@@ -1,7 +1,11 @@
-
+import { Typography } from "@mui/material"
+import { MailOutline } from "@mui/icons-material"
 
 export const JournalPage = () => {
   return (
-    <div>JournalPages</div>
+    <>
+        <MailOutline />
+        <Typography variant="h1" >JournalPages</Typography>
+    </>
   )
 }
