@@ -32,7 +32,7 @@ export const NavBar = ({ drawerWidth }: Props) => {
           <Typography variant="h6" noWrap component="div">
             JournalApp
           </Typography>
-          <IconButton color="error">
+          <IconButton >
             <LogoutOutlined />
           </IconButton>
         </Grid2>

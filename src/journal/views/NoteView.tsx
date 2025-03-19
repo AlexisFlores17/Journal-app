@@ -13,17 +13,17 @@ export const NoteView = () => {
         sx={{ mb: 1 }}
       >
         <Grid item>
-          <Typography fontSize={39} fontWeight="light">
+          <Typography fontSize={39} fontWeight="light" sx={{mb:2}}>
             28 de Agosto de 2025
           </Typography>
         </Grid>
         <Grid item>
-          <Button color="primary" sx={{ p: 2 }}>
+          <Button sx={{ p: 2 }}>
             <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
             Guardar
           </Button>
-        </Grid>{" "}
-        <Grid container>
+        </Grid>
+        <Grid container sx={{mb:2}}>
           <TextField
             type="text"
             variant="filled"
