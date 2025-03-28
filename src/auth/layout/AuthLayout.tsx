@@ -18,12 +18,12 @@ export const AuthLayout = ({ children, title }: AuthLayoutProps) => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      sx={{ minHeight: "100vh", backgroundColor: "primary.main", padding: 4 }}
+      sx={{ minHeight: "100vh", padding: 4 }}
     >
       <Grid2
         className="box-shadow"
         size={{ xs: 12}}
-        sx={{ backgroundColor: "white", padding: 3, borderRadius: 2, width: { sm:450} }}
+        sx={{ backgroundColor: "#373737", padding: 3, borderRadius: 2, width: { sm:450} }}
       >
         <Typography variant="h5" sx={{ mb: 1 }}>
           {title}
