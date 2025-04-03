@@ -4,30 +4,33 @@ import { Link as RouterLink } from "react-router";
 import { AuthLayout } from "../layout/AuthLayout";
 import { useForm } from "../../hooks";
 import { checkingAuthentication, startGoogleSignIn } from "../../store/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "../../store";
+import { RootState } from "../../store/store";
+import { useMemo } from "react";
 
 export const LoginPage = () => {
+  const { status } = useSelector((state: RootState) => state.auth);
 
-  const dispatch:AppDispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
-  const {email, password, onInputChange} = useForm({
-    email:"alex@google.com",
-    password:"123456"
-  })
+  const { email, password, onInputChange } = useForm({
+    email: "alex@google.com",
+    password: "123456",
+  });
 
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
 
   const onSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    dispatch(checkingAuthentication(email, password))
+    dispatch(checkingAuthentication(email, password));
     console.log(email, password);
   };
 
   const onGoogleSignIn = () => {
     dispatch(startGoogleSignIn());
     console.log("Google Sign In");
-  }
-
+  };
 
   return (
     <AuthLayout title="Login">
@@ -61,12 +64,22 @@ export const LoginPage = () => {
 
           <Grid2 container spacing={2} sx={{ mb: 2, mt: 1 }} size={12}>
             <Grid2 size={{ xs: 12, md: 6 }}>
-              <Button type="submit" variant="contained" fullWidth>
+              <Button
+                disabled={isAuthenticating}
+                type="submit"
+                variant="contained"
+                fullWidth
+              >
                 Login
               </Button>
             </Grid2>
             <Grid2 size={{ xs: 12, md: 6 }}>
-              <Button variant="contained" fullWidth onClick={onGoogleSignIn} >
+              <Button
+                disabled={isAuthenticating}
+                variant="contained"
+                fullWidth
+                onClick={onGoogleSignIn}
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
