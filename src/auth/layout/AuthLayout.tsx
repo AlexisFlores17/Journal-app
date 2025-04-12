@@ -13,6 +13,7 @@ interface AuthLayoutProps {
 export const AuthLayout = ({ children, title }: AuthLayoutProps) => {
   return (
     <Grid2
+ 
       container
       spacing={0}
       direction="column"
